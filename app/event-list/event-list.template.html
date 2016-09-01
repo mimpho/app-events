@@ -10,7 +10,7 @@
 				<span>{{event.startDate | date:'MM/dd/yyyy'}}</span> - <span>{{event.endDate | date:'MM/dd/yyyy'}}</span>
 			</p>
 			<p class="panel-description show-for-medium-up" ng-bind-html="event.description"></p>
-			<button class="button expand" ng-click="$ctrl.getEventInfo(event.id)">Comprar</button>
+			<button class="button expand radius" ng-click="$ctrl.getEventInfo(event.id)">Comprar</button>
 		</div>
 	</article>
 </section>

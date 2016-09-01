@@ -57,3 +57,14 @@ top-bar .sticky.fixed {
   line-height: 1.4rem;
   overflow: hidden;
 }
+.panel .panel-divider {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+.panel .panel-count {
+  padding: .5rem 1rem;
+  font-weight: bold;
+  color: #888;
+}

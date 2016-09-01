@@ -7,5 +7,6 @@ angular.module('eventsApp', [
   //'mm.foundation',
   'topBar',
   'eventList',
-  'sessions'
+  'sessions',
+  'shoppingCart'
 ]);

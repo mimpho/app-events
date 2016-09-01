@@ -1,20 +1,31 @@
 <section class="row">
-		<article ng-if="$ctrl.event" ng-repeat="session in $ctrl.event.sessions | orderBy:$ctrl.orderProp" class="large-6 columns">
-			<div class="panel">
-				<h1>{{session.title}}</h1>
-				<h2>{{session.subtitle}}</h2>
-				<div class="panel-img">
-					<img ng-src="{{session.image}}" alt="{{session.title}}" />
+	<div class="large-8 columns">
+		<article class="panel clearfix">
+			<h1>{{$ctrl.event.event.title}}</h1>
+			<h2>{{$ctrl.event.event.subtitle}}</h2>
+			<div class="panel-img">
+				<img ng-src="{{$ctrl.event.event.image}}" alt="{{$ctrl.event.event.title}}" />
+			</div>
+			<div ng-if="$ctrl.event" ng-repeat="session in $ctrl.event.sessions | orderBy:$ctrl.orderProp" class="clearfix">
+				<div class="left">
+					<span class="panel-date">Fecha: {{session.date | date:'MM/dd/yyyy'}}</span><br/>
+					Disponibilidad: <b>{{session.availability}}</b>
 				</div>
-				<p class="panel-date">
-					{{session.date | date:'MM/dd/yyyy'}}</span>
-				</p>
-				<p class="">{{session.availability}}</p>
-				<button class="button">+</button>
-				<button class="button">-</button>
+				<div class="right">
+					<span class="panel-count left">{{session.locations}}</span>
+					<ul class="button-group radius right">
+						<li><button ng-click="$ctrl.pushLocation()" class="button small secondary large-text-center"><b>+</b></button></li>
+						<li><button class="button small secondary large-text-center"><b>-</b></button></li>
+					</ul>
+				</div>
+				<div ng-if="!$last" class="panel-divider clearfix"></div>
+			</div>
+			<div ng-if="!$ctrl.event">
+				EVENT INFO NOT FOUND
 			</div>
 		</article>
-		<article ng-if="!$ctrl.event">
-			<div class="panel">EVENT INFO NOT FOUND</div>
-		</article>
+	</div>
+	<div class="large-4 columns">
+		<shopping-cart></shopping-cart>
+	</div>
 </section>
