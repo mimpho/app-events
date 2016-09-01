@@ -1,0 +1,17 @@
+<section class="row">
+	<article ng-repeat="session in $ctrl.event.sessions | orderBy:$ctrl.orderProp" class="large-6 columns">
+		<div class="panel">
+			<h1>{{session.title}}</h1>
+			<h2>{{session.subtitle}}</h2>
+			<div class="panel-img">
+				<img ng-src="{{session.image}}" alt="{{session.title}}" />
+			</div>
+			<p class="panel-date">
+				{{session.date | date:'MM/dd/yyyy'}}</span>
+			</p>
+			<p class="">{{session.availability}}</p>
+			<button class="button">+</button>
+			<button class="button">-</button>
+		</div>
+	</article>
+</section>
