@@ -1,11 +1,16 @@
 <section class="row">
-	<article ng-repeat="event in $ctrl.events" class="large-6 columns">
+	<article ng-repeat="event in $ctrl.events | orderBy:'-startDate'" class="large-6 columns">
 		<div class="panel">
-			<h2>{{event.title}}</h2>
-			<h3>{{event.subtitle}}</h3>
-			<img ng-src="{{event.image}}" />
-			<p><span>{{event.startDate | date:'MM/dd/yyyy'}}</span> - <span>{{event.endDate | date:'MM/dd/yyyy'}}</span></p>
-			<p ng-bind-html="event.description"></p>
+			<h1><a href="#" title="{{event.title}}">{{event.title}}</a></h1>
+			<h2><a href="#" title="{{event.subtitle}}">{{event.subtitle}}</a></h2>
+			<a href="#" title="{{event.title}}" class="panel-img">
+				<img ng-src="{{event.image}}" alt="{{event.title}}" />
+			</a>
+			<p class="panel-date">
+				<span>{{event.startDate | date:'MM/dd/yyyy'}}</span> - <span>{{event.endDate | date:'MM/dd/yyyy'}}</span>
+			</p>
+			<p class="panel-description show-for-medium-up" ng-bind-html="event.description"></p>
+			<button class="button expand">Comprar</button>
 		</div>
 	</article>
 </section>
