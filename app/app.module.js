@@ -6,5 +6,6 @@ angular.module('eventsApp', [
   'ui.router',
   //'mm.foundation',
   'topBar',
-  'eventList'
+  'eventList',
+  'sessions'
 ]);

@@ -12,20 +12,16 @@ angular.
             pageTitle: "Catalog"
           }
         })
-        /*.state("test", {
-          url: "/test/:patientid",
-          title: "Patient",
-          templateUrl: "/app/patient/patient.html",
+        .state("sessions", {
+          url: "/sessions",
+          template: "<sessions></sessions>",
           data: {
-            pageTitle: "Patient"
+            pageTitle: "Sessions"
           },
-          controller: "patient",
-          controllerAs: "vm",
-          resolve: ['$stateParams', 'patientService', function ($stateParams,
-                   patientService) {
-              return patientService.resolve($stateParams.patientid);
-          }]
-        })*/;
+          params: {
+            eventid: "eventid"
+          }
+        });
       /*$locationProvider.html5Mode({
         enabled: true,
         requireBase: false

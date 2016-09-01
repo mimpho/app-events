@@ -7,12 +7,15 @@ angular.
   ).
   component('eventList', {
     templateUrl: 'event-list/event-list.template.html',
-    controller: ['$http', function EventListController($http) {
+    controller: ['$http', '$state', function EventListController($http, $state) {
       var self = this;
       self.orderProp = '-startDate';
       $http.get('assets/data/events.json').then(function(response) {
         self.events = response.data;
       });
+      self.getEventInfo = function(id) {
+        $state.go('sessions', {eventid: id});
+      };
       $(document).foundation();
     }]
   });

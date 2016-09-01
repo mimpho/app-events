@@ -5,8 +5,9 @@ angular.
   module('sessions').
   component('sessions', {
     templateUrl: 'sessions/sessions.template.html',
-    controller: ['$http', function SessionsController($http) {
+    controller: ['$http', '$state', function SessionsController($http, $state) {
       var self = this;
+      alert($state.params.eventid);
       self.orderProp = '-sessions.date';
       $http.get('assets/data/event-info-68.json').then(function(response) {
         self.event = response.data;
