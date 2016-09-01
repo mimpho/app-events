@@ -2,7 +2,9 @@
 
 // Register `eventList` component, along with its associated controller and template
 angular.
-  module('eventList').
+  module('eventList',[
+    'ngSanitize']
+  ).
   component('eventList', {
     templateUrl: 'event-list/event-list.template.html',
     controller: ['$http', function CatalogController($http) {
