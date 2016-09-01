@@ -4,5 +4,5 @@
 angular.module('eventsApp', [
   'ngRoute',
   'ui.router',
-  'catalog'
+  'eventsCatalog'
 ]);

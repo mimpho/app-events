@@ -8,16 +8,17 @@ angular.
         .state("catalog", {
           url: "/catalog",
           title: "Catalog",
-          template: "<catalog></catalog>"/*,
-          templateUrl: "/catalog/catalog.template.html",
-          controller: "catalogCtrl",
+          //template: "<events-catalog></events-catalog>",
+          templateUrl: "/events-catalog/events-catalog.template.html",
+          /*controller: "catalogCtrl",
           controllerAs: "vm",
           resolve: ['$stateParams', 'patientService', function ($stateParams,
                    patientService) {
               return patientService.resolve($stateParams.patientid);
           }]*/
-        /*.state("catalog", {
-          url: "/catalog/:patientid",
+        })
+        .state("test", {
+          url: "/test/:patientid",
           title: "Patient",
           templateUrl: "/app/patient/patient.html",
           controller: "patient",
@@ -25,9 +26,14 @@ angular.
           resolve: ['$stateParams', 'patientService', function ($stateParams,
                    patientService) {
               return patientService.resolve($stateParams.patientid);
-          }]*/
+          }]
         });
-      //$locationProvider.html5Mode(true);
-      $urlRouterProvider.when('', '/catalog');
+      $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+      });
+      $urlRouterProvider.
+        when('', '/catalog').
+        otherwise('/catalog');
     }
   ]);
