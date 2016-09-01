@@ -8,7 +8,7 @@ angular.
     controller: ['$http', function CatalogController($http) {
       var self = this;
       self.orderProp = 'age';
-
+console.log("catalog component");
       $http.get('assets/data/events.json').then(function(response) {
         self.events = response.data;
       });

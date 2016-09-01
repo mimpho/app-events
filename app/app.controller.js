@@ -2,7 +2,7 @@
 
 angular.
   module('eventsApp').
-  controller('MyCtrl', ['$scope', '$state',
+  controller('eventsCtrl', ['$scope', '$state',
     function MyCtrl($scope, $state) {
 
       $scope.catalog = function() {

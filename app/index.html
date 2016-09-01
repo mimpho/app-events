@@ -15,9 +15,9 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <title>{{title}}</title>
 </head>
-<body>
-  <div ng-view></div>
-
+<body ng-controller="eventsCtrl">
+  <top-bar></top-bar>
+  <div ui-view></div>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -28,13 +28,17 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- <script src="bower_components/angular-foundation/mm-foundation.min.js"></script>
+  <script src="bower_components/angular-foundation/mm-foundation-tpls.min.js"></script> -->
   <script src="bower_components/foundation/js/vendor/jquery.js"></script>
+  <script src="bower_components/foundation/js/vendor/fastclick.js"></script>
   <script src="bower_components/foundation/js/foundation.min.js"></script>
   <script src="app.module.js"></script>
   <script src="app.config.js"></script>
-  <!-- <script src="app.config.js"></script> -->
-  <!-- <script src="app.controller.js"></script> -->
+  <script src="app.controller.js"></script>
   <script src="app.directive.js"></script>
+  <script src="top-bar/top-bar.module.js"></script>
+  <script src="top-bar/top-bar.component.js"></script>
   <script src="events-catalog/events-catalog.module.js"></script>
   <script src="events-catalog/events-catalog.component.js"></script>
   <script src="components/version/version.js"></script>
