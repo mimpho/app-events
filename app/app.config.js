@@ -1,3 +1,6 @@
+/*
+  TODO: Mirar explicación en http://www.ng-newsletter.com/posts/angular-ui-router.html
+*/
 'use strict';
 
 angular.
