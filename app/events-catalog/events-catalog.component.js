@@ -8,9 +8,9 @@ angular.
     controller: ['$http', function CatalogController($http) {
       var self = this;
       self.orderProp = 'age';
-
       $http.get('assets/data/events.json').then(function(response) {
         self.events = response.data;
       });
+      $(document).foundation();
     }]
   });

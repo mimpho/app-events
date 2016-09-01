@@ -1,21 +1,35 @@
-/*
-  TODOs
-  Este ejemplo sencillo funciona: http://plnkr.co/edit/NpzQsxYGofswWQUBGthR?p=preview
-  Mirar explicación: http://www.ng-newsletter.com/posts/angular-ui-router.html
-*/
 'use strict';
 
 angular.
   module('eventsApp').
-  config(['$locationProvider' ,'$routeProvider',
-    function config($locationProvider, $routeProvider) {
-      //$locationProvider.hashPrefix('!');
-
-      $routeProvider.
-        when('/catalog', {
-          title: 'Catalog',
-          template: '<events-catalog></events-catalog>'
-        }).
-        otherwise('/catalog');
+  config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+    function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+      $stateProvider
+        .state("catalog", {
+          url: "/catalog",
+          template: "<events-catalog></events-catalog>",
+          data: {
+            pageTitle: "Catalog"
+          }
+        })
+        /*.state("test", {
+          url: "/test/:patientid",
+          title: "Patient",
+          templateUrl: "/app/patient/patient.html",
+          data: {
+            pageTitle: "Patient"
+          },
+          controller: "patient",
+          controllerAs: "vm",
+          resolve: ['$stateParams', 'patientService', function ($stateParams,
+                   patientService) {
+              return patientService.resolve($stateParams.patientid);
+          }]
+        })*/;
+      /*$locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+      });*/
+      $urlRouterProvider.otherwise('/catalog');
     }
   ]);

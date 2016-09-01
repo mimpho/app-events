@@ -3,6 +3,8 @@
 // Define the `eventsApp` module
 angular.module('eventsApp', [
   'ngRoute',
-  //'ui.router',
+  'ui.router',
+  //'mm.foundation',
+  'topBar',
   'eventsCatalog'
 ]);
