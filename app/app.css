@@ -27,6 +27,7 @@ top-bar .sticky.fixed {
   border-radius: 3px;
 }
 .panel h1 {
+  margin-top: 0px;
   margin-bottom: .4rem;
   font-size: 1.3125rem;
 }

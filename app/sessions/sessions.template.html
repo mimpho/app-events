@@ -1,6 +1,7 @@
 <section class="row">
 	<div class="large-8 columns">
 		<article class="panel clearfix">
+			<a href="#" title="Volver" class="panel-count right">✕</a>
 			<h1>{{$ctrl.event.event.title}}</h1>
 			<h2>{{$ctrl.event.event.subtitle}}</h2>
 			<div class="panel-img">
@@ -11,13 +12,19 @@
 					<span class="panel-date">Fecha: {{session.date | date:'MM/dd/yyyy'}}</span><br/>
 					Disponibilidad: <b>{{session.availability}}</b>
 				</div>
-				<div class="right">
-					<span class="panel-count left">{{session.locations}}</span>
-					<ul class="button-group radius right">
-						<li><button ng-click="$ctrl.pushLocation()" class="button small secondary large-text-center"><b>+</b></button></li>
-						<li><button class="button small secondary large-text-center"><b>-</b></button></li>
-					</ul>
-				</div>
+			    <div class="medium-3 small-6 columns right">
+			      <div class="row collapse">
+			        <div class="small-4 columns">
+			          <a class="button prefix radius secondary" title="Añadir localidad" ng-click="$ctrl.pushLocation($index)"><b>+</b></a>
+			        </div>
+			        <div class="small-4 columns">
+			          <input type="text" class="text-center" ng-model="$ctrl.locations[$index]" ng-init="$ctrl.locations[$index]=0">
+			        </div>
+			        <div class="small-4 columns">
+			          <a class="button postfix radius secondary" title="Eliminar localidad" ng-click="$ctrl.popLocation($index)"><b>-</b></a>
+			        </div>
+			      </div>
+			    </div>
 				<div ng-if="!$last" class="panel-divider clearfix"></div>
 			</div>
 			<div ng-if="!$ctrl.event">
@@ -27,5 +34,6 @@
 	</div>
 	<div class="large-4 columns">
 		<shopping-cart></shopping-cart>
+		<!-- <check-list name="q.id" option="q.prices"></check-list> -->
 	</div>
 </section>
