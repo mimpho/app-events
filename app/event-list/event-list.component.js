@@ -1,10 +1,10 @@
 'use strict';
 
-// Register `eventsCatalog` component, along with its associated controller and template
+// Register `eventList` component, along with its associated controller and template
 angular.
-  module('eventsCatalog').
-  component('eventsCatalog', {
-    templateUrl: 'events-catalog/events-catalog.template.html',
+  module('eventList').
+  component('eventList', {
+    templateUrl: 'event-list/event-list.template.html',
     controller: ['$http', function CatalogController($http) {
       var self = this;
       self.orderProp = 'age';

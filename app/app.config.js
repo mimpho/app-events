@@ -7,7 +7,7 @@ angular.
       $stateProvider
         .state("catalog", {
           url: "/catalog",
-          template: "<events-catalog></events-catalog>",
+          template: "<event-list></event-list>",
           data: {
             pageTitle: "Catalog"
           }
