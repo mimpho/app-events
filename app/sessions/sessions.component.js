@@ -7,11 +7,14 @@ angular.
     templateUrl: 'sessions/sessions.template.html',
     controller: ['$http', '$state', function SessionsController($http, $state) {
       var self = this;
-      alert($state.params.eventid);
       self.orderProp = '-sessions.date';
-      $http.get('assets/data/event-info-68.json').then(function(response) {
-        self.event = response.data;
-      });
+      $http.
+        get('assets/data/event-info-'+$state.params.eventid+'.json').
+        then(function successCallback(response) {
+          self.event = response.data;
+        }, function errorCallback(response) {
+          self.event = null;
+        });
       $(document).foundation();
     }]
   });
