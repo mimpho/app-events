@@ -13,13 +13,10 @@ angular.
           }
         })
         .state("sessions", {
-          url: "/sessions",
+          url: "/sessions/:eventid",
           template: "<sessions></sessions>",
           data: {
             pageTitle: "Sessions"
-          },
-          params: {
-            eventid: "eventid"
           }
         });
       /*$locationProvider.html5Mode({
