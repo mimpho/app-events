@@ -2,15 +2,38 @@
 
 angular.
   module('eventsApp').
-  config(['$locationProvider' ,'$routeProvider',
-    function config($locationProvider, $routeProvider) {
-      //$locationProvider.hashPrefix('!');
-
-      $routeProvider.
-        when('/catalog', {
-          title: 'Catalog',
-          template: '<events-catalog></events-catalog>'
-        }).
+  config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+    function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+      $stateProvider
+        .state("catalog", {
+          url: "/catalog",
+          title: "Catalog",
+          template: "<events-catalog></events-catalog>",
+          //templateUrl: "/events-catalog/events-catalog.template.html",
+          // controller: "catalogCtrl",
+          // controllerAs: "vm",
+          // resolve: ['$stateParams', 'patientService', function ($stateParams,
+          //          patientService) {
+          //     return patientService.resolve($stateParams.patientid);
+          // }]
+        })
+        .state("test", {
+          url: "/test/:patientid",
+          title: "Patient",
+          templateUrl: "/app/patient/patient.html",
+          controller: "patient",
+          controllerAs: "vm",
+          resolve: ['$stateParams', 'patientService', function ($stateParams,
+                   patientService) {
+              return patientService.resolve($stateParams.patientid);
+          }]
+        });
+      $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+      });
+      $urlRouterProvider.
+        when('', '/catalog').
         otherwise('/catalog');
     }
   ]);
