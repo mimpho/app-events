@@ -8,14 +8,14 @@ angular.
         .state("catalog", {
           url: "/catalog",
           title: "Catalog",
-          //template: "<events-catalog></events-catalog>",
-          templateUrl: "/events-catalog/events-catalog.template.html",
-          /*controller: "catalogCtrl",
-          controllerAs: "vm",
-          resolve: ['$stateParams', 'patientService', function ($stateParams,
-                   patientService) {
-              return patientService.resolve($stateParams.patientid);
-          }]*/
+          template: "<events-catalog></events-catalog>",
+          //templateUrl: "/events-catalog/events-catalog.template.html",
+          // controller: "catalogCtrl",
+          // controllerAs: "vm",
+          // resolve: ['$stateParams', 'patientService', function ($stateParams,
+          //          patientService) {
+          //     return patientService.resolve($stateParams.patientid);
+          // }]
         })
         .state("test", {
           url: "/test/:patientid",
