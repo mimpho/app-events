@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "app-events",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "Sistema de reserva de localidades para eventos",
+  "repository": "https://github.com/mimpho/app-events",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.7.7",
