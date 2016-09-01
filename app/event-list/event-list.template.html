@@ -1,4 +1,11 @@
-<br><br><br>Events-catalog template<br><br><br><br><br><br>Events-catalog template<br><br><br><br><br><br>Events-catalog template<br><br><br>
-<div>
-	<pre>{{$ctrl.events}}</pre>
-</div>
+<section class="row">
+	<article ng-repeat="event in $ctrl.events" class="large-6 columns">
+		<div class="panel">
+			<h2>{{event.title}}</h2>
+			<h3>{{event.subtitle}}</h3>
+			<img ng-src="{{event.image}}" />
+			<p><span>{{event.startDate | date:'MM/dd/yyyy'}}</span> - <span>{{event.endDate | date:'MM/dd/yyyy'}}</span></p>
+			<p ng-bind-html="event.description"></p>
+		</div>
+	</article>
+</section>
