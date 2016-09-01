@@ -8,7 +8,6 @@ angular.
     controller: ['$http', '$state', function SessionsController($http, $state) {
       var self = this;
       self.locations = null;
-      
       self.orderProp = '-sessions.date';
 
       self.pushLocation = function pushLocation(index) {
