@@ -14,9 +14,6 @@ angular.
               ? toState.data.pageTitle 
               : 'Default title';
             });
-            console.log("directive");
-            $compile(element.contents())(scope);
-            $(document).foundation();
           };
 
           $rootScope.$on('$stateChangeSuccess', listener);
