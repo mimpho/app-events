@@ -7,9 +7,9 @@ angular.
   ).
   component('eventList', {
     templateUrl: 'event-list/event-list.template.html',
-    controller: ['$http', function CatalogController($http) {
+    controller: ['$http', function EventListController($http) {
       var self = this;
-      self.orderProp = 'age';
+      self.orderProp = '-startDate';
       $http.get('assets/data/events.json').then(function(response) {
         self.events = response.data;
       });

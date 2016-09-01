@@ -1,5 +1,5 @@
 <section class="row">
-	<article ng-repeat="event in $ctrl.events | orderBy:'-startDate'" class="large-6 columns">
+	<article ng-repeat="event in $ctrl.events | orderBy:$ctrl.orderProp" class="large-6 columns">
 		<div class="panel">
 			<h1><a href="#" title="{{event.title}}">{{event.title}}</a></h1>
 			<h2><a href="#" title="{{event.subtitle}}">{{event.subtitle}}</a></h2>
