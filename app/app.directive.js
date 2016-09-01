@@ -5,7 +5,7 @@ angular.
   directive('title', ['$rootScope', '$timeout', '$compile',
     function($rootScope, $timeout, $compile) {
       return {
-        link: function(scope, element, attrs) {
+        link: function(scope) {
 
           var listener = function(event, toState) {
 
