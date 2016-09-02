@@ -8,6 +8,7 @@ angular.
       replace: true,
       scope: {
           locations: '=',
+          sessions: '=',
           date: '=',
           key: '=',
           value: '=',
@@ -35,6 +36,7 @@ angular.
     var self = this;
     $scope.locations = [];
     $scope.locationsA = [];
+    $scope.sessionsA = [];
 
     $scope.keyA = 'AA';
     $scope.valueA = 'BB';
@@ -47,10 +49,11 @@ angular.
       console.log("removeSessionCtrl");
     }
 
-    $scope.pushLocation = function pushLocation(index,length) {
-      if ($scope.locations[index] < length) {
+    $scope.pushLocation = function pushLocation(index,session) {
+      if ($scope.locations[index] < session.availability) {
         $scope.locations[index]++;
         $scope.locationsA[index] = $scope.locations[index];
+        $scope.sessionsA[index] = session;
       }
 
     };

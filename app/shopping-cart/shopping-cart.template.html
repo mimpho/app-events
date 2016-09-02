@@ -1,9 +1,9 @@
 <section class="panel">
-	<div ng-repeat="location in locations">
-		<div ng-if="location > 0" class="clearfix">
-			<div class="left panel-date">{{date}}</div>
+	<div ng-repeat="session in sessions">
+		<div ng-if="locations[$index] > 0" class="clearfix">
+			<div class="left panel-date">{{session.date | date:'MM/dd/yyyy'}}</div>
 			<div class="right">
-				x{{location}} 
+				x{{locations[$index]}} 
 				<a x-ng-click="remove(session)">Remove</a>
 			</div>
 		</div>
