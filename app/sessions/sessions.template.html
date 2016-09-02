@@ -1,5 +1,8 @@
 <section class="row" ng-controller="shoppingCartController">
-	<div class="large-8 columns">
+	<div class="large-4 large-push-8 columns">
+		<shopping-cart-directive event="eventA" sessions="sessionsA" locations="locationsA" rem="removeA(index)" />
+	</div>
+	<div class="large-8 large-pull-4 columns">
 		<article class="panel clearfix">
 			<a href="#" title="Volver" class="panel-count right">✕</a>
 			<div ng-if="$ctrl.event">
@@ -33,8 +36,5 @@
 				EVENT INFO NOT FOUND
 			</div>
 		</article>
-	</div>
-	<div class="large-4 columns">
-		<shopping-cart-directive event="eventA" sessions="sessionsA" locations="locationsA" rem="removeA(index)" />
 	</div>
 </section>
