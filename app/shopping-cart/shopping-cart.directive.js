@@ -7,10 +7,11 @@ angular.
       restrict: 'E',
       replace: true,
       scope: {
+          locations: '=',
+          date: '=',
           key: '=',
           value: '=',
           locationsParam: '=',
-          sessions: '=',
           accept: "&",
           removeSession: "&"
       },
@@ -19,7 +20,6 @@ angular.
         // Controles desde el shopping-cart
         //$scope.sessions
         //$scope.locations = 
-        $scope.title = "Tituloooo";
         $scope.save= function() {
           console.log('from directive', $scope.key, $scope.value);    
           $scope.accept()
@@ -34,8 +34,7 @@ angular.
     // Controles desde el listado
     var self = this;
     $scope.locations = [];
-    console.log("controller");
-    console.log($scope.sessions);
+    $scope.locationsA = [];
 
     $scope.keyA = 'AA';
     $scope.valueA = 'BB';
@@ -51,18 +50,14 @@ angular.
     $scope.pushLocation = function pushLocation(index,length) {
       if ($scope.locations[index] < length) {
         $scope.locations[index]++;
-        $scope.sessionsA = $scope.locations[index];
+        $scope.locationsA[index] = $scope.locations[index];
       }
 
     };
     $scope.popLocation = function popLocation(index) {
       if ($scope.locations[index] > 0) {
         $scope.locations[index]--;
-        if ($scope.locations[index] == 0) {
-          $scope.sessionsA = null;
-        } else {
-          $scope.sessionsA = $scope.locations[index];
-        }
+        $scope.locationsA[index] = $scope.locations[index];
       }
     };
 

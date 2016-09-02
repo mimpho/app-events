@@ -1,4 +1,20 @@
 <section class="panel">
+	<div ng-repeat="location in locations">
+		<div ng-if="location > 0" class="clearfix">
+			<div class="left panel-date">{{date}}</div>
+			<div class="right">
+				x{{location}} 
+				<a x-ng-click="remove(session)">Remove</a>
+			</div>
+		</div>
+	</div>
+	<div>
+		<label class="control-label">{{key}}</label>
+		<label class="control-label">{{key}}</label>
+		<input type="text" ng-model="value" />
+		<button type="button" x-ng-click="cancel()">CANCEL</button>
+		<button type="submit" x-ng-click="save()">SAVE</button>
+	</div>
 	<!-- <div ng-repeat="event in events">
 		<h1>{{event.title}}</h1>
 		<div ng-repeat="session in event.sessions" class="clearfix">
@@ -10,12 +26,4 @@
 			</div>
 		</div>
 	</div> -->
-	<div>{{sessions}}</div>
-	<div>
-		<label class="control-label">{{key}}</label>
-		<label class="control-label">{{key}}</label>
-		<input type="text" ng-model="value" />
-		<button type="button" x-ng-click="cancel()">CANCEL</button>
-		<button type="submit" x-ng-click="save()">SAVE</button>
-	</div>
 </section>
