@@ -1,3 +1,21 @@
 <section class="panel">
-	shoppingCart<!--  {{test}} {{$ctrl.customer}} {{$ctrl.locations}} -->
+	<!-- <div ng-repeat="event in events">
+		<h1>{{event.title}}</h1>
+		<div ng-repeat="session in event.sessions" class="clearfix">
+			<div class="left">{{session.date}}</p>
+			<div class="right">
+				x{{session.locations}} 
+				<input type="text" ng-model="locationsParam">
+				<a x-ng-click="remove(session)">Remove</a>
+			</div>
+		</div>
+	</div> -->
+	<div>{{sessions}}</div>
+	<div>
+		<label class="control-label">{{key}}</label>
+		<label class="control-label">{{key}}</label>
+		<input type="text" ng-model="value" />
+		<button type="button" x-ng-click="cancel()">CANCEL</button>
+		<button type="submit" x-ng-click="save()">SAVE</button>
+	</div>
 </section>

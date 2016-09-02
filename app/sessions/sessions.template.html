@@ -15,13 +15,13 @@
 			    <div class="medium-3 small-6 columns right">
 					<div class="row collapse">
 						<div class="small-4 columns">
-							<a class="button prefix radius secondary" title="Añadir localidad" ng-click="pushLocation1($index)"><b>+</b></a>
+							<a class="button prefix radius secondary" title="Añadir localidad" ng-click="pushLocation($index,session.availability)"><b>+</b></a>
 						</div>
 						<div class="small-4 columns">
-							<input type="text" class="text-center" ng-model="locations1[$index]" ng-init="locations1[$index]=0">
+							<input type="text" class="text-center" ng-model="locations[$index]" ng-init="locations[$index]=0">
 						</div>
 						<div class="small-4 columns">
-							<a class="button postfix radius secondary" title="Eliminar localidad" ng-click="popLocation1($index)"><b>-</b></a>
+							<a class="button postfix radius secondary" title="Eliminar localidad" ng-click="popLocation($index)"><b>-</b></a>
 						</div>
 					</div>
 			    </div>
@@ -33,6 +33,6 @@
 		</article>
 	</div>
 	<div class="large-4 columns">
-		<shopping-cart fn="count = count + 1" locations=$ctrl.locations></shopping-cart>
+		<shopping-cart-directive locationsParam="locations" removeSession="removeSessionCtrl(session)" accept="blabla('from directive')" key='keyA' value='valueA' sessions="sessionsA" />
 	</div>
 </section>

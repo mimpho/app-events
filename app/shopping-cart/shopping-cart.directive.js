@@ -2,44 +2,68 @@
 
 angular.
   module('shoppingCart').
-  controller('shoppingCartController', ['$scope', function($scope) {
-    var self = this;
-    console.log("controller");
-    console.log($scope);
-    $scope.customer = {
-      name: 'Naomi',
-      address: '1600 Amphitheatre'
-    };
-    //self.locations1 = new Array(self.event.sessions.length);
-    $scope.locations1 = new Array(4);
-
-    $scope.pushLocation1 = function pushLocation1(index) {
-console.log("pushLocation1");
-      if ($scope.locations1[index] < self.event.sessions[index].availability)
-        $scope.locations1[index]++;
-    };
-    $scope.popLocation1 = function popLocation1(index) {
-console.log("popLocation1");
-      if ($scope.locations1[index] > 0)
-        $scope.locations1[index]--;
-    };
-  }]).
-  directive("shoppingCart", function() {
-    var linkFunction = function(scope, element, attributes) {
-      scope.text = scope.fn({ count: 5 });
-      console.log(attributes);
-      console.log(scope.text);
-      console.log(scope.locations);
-    };
-
+  directive("shoppingCartDirective", function() {
     return {
-      restrict: "E",
-      //template: "<p></p>",
-      templateUrl: 'shopping-cart/shopping-cart.template.html',
-      link: linkFunction,
+      restrict: 'E',
+      replace: true,
       scope: {
-        fn: "&fn",
-        locations: "&locations" 
+          key: '=',
+          value: '=',
+          locationsParam: '=',
+          sessions: '=',
+          accept: "&",
+          removeSession: "&"
+      },
+      templateUrl: 'shopping-cart/shopping-cart.template.html',
+      controller: function($scope, $element, $attrs) {
+        // Controles desde el shopping-cart
+        //$scope.sessions
+        //$scope.locations = 
+        $scope.title = "Tituloooo";
+        $scope.save= function() {
+          console.log('from directive', $scope.key, $scope.value);    
+          $scope.accept()
+        };
+        $scope.remove = function(session) {
+          $scope.removeSession(session);
+        }
       }
     };
-  });
+  }).
+  controller('shoppingCartController', ['$scope', function($scope) {
+    // Controles desde el listado
+    var self = this;
+    $scope.locations = [];
+    console.log("controller");
+    console.log($scope.sessions);
+
+    $scope.keyA = 'AA';
+    $scope.valueA = 'BB';
+    $scope.blabla = function(msg) { 
+      console.log('from controller', $scope.keyA, $scope.valueA);  
+      console.log('hello ' + msg);
+    };
+
+    $scope.removeSessionCtrl = function(session) {
+      console.log("removeSessionCtrl");
+    }
+
+    $scope.pushLocation = function pushLocation(index,length) {
+      if ($scope.locations[index] < length) {
+        $scope.locations[index]++;
+        $scope.sessionsA = $scope.locations[index];
+      }
+
+    };
+    $scope.popLocation = function popLocation(index) {
+      if ($scope.locations[index] > 0) {
+        $scope.locations[index]--;
+        if ($scope.locations[index] == 0) {
+          $scope.sessionsA = null;
+        } else {
+          $scope.sessionsA = $scope.locations[index];
+        }
+      }
+    };
+
+  }]);
