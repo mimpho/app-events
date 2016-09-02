@@ -1,4 +1,19 @@
-<section class="row">
+<div ng-controller="ControllerZero">
+    <input ng-model="message" >
+    <button ng-click="handleClick(message);">BROADCAST</button>
+</div>
+
+<div ng-controller="ControllerOne">
+    <input ng-model="message" >
+</div>
+
+<div ng-controller="ControllerTwo">
+    <input ng-model="message" >
+</div>
+
+<shopping-cart-component ng-model="message"></shopping-cart-component>
+<!-- 
+<section class="row" ng-controller="shoppingCartController">
 	<div class="large-8 columns">
 		<article class="panel clearfix">
 			<a href="#" title="Volver" class="panel-count right">✕</a>
@@ -15,13 +30,13 @@
 			    <div class="medium-3 small-6 columns right">
 					<div class="row collapse">
 						<div class="small-4 columns">
-							<a class="button prefix radius secondary" title="Añadir localidad" ng-click="$ctrl.pushLocation($index)"><b>+</b></a>
+							<a class="button prefix radius secondary" title="Añadir localidad" ng-click="pushLocation1($index)"><b>+</b></a>
 						</div>
 						<div class="small-4 columns">
-							<input type="text" class="text-center" ng-model="$ctrl.locations[$index]" ng-init="$ctrl.locations[$index]=0">
+							<input type="text" class="text-center" ng-model="locations1[$index]" ng-init="locations1[$index]=0">
 						</div>
 						<div class="small-4 columns">
-							<a class="button postfix radius secondary" title="Eliminar localidad" ng-click="$ctrl.popLocation($index)"><b>-</b></a>
+							<a class="button postfix radius secondary" title="Eliminar localidad" ng-click="popLocation1($index)"><b>-</b></a>
 						</div>
 					</div>
 			    </div>
@@ -33,7 +48,6 @@
 		</article>
 	</div>
 	<div class="large-4 columns">
-		<shopping-cart></shopping-cart>
-		<!-- <check-list name="q.id" option="q.prices"></check-list> -->
+		<shopping-cart fn="count = count + 1" locations=$ctrl.locations></shopping-cart>
 	</div>
-</section>
+</section> -->
