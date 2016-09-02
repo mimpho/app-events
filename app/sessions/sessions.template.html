@@ -15,7 +15,7 @@
 			    <div class="medium-3 small-6 columns right">
 					<div class="row collapse">
 						<div class="small-4 columns">
-							<a class="button prefix radius secondary" title="Añadir localidad" ng-click="pushLocation($index,session)"><b>+</b></a>
+							<a class="button prefix radius secondary" title="Añadir localidad" ng-click="pushLocation($index,$ctrl.event.event,session)"><b>+</b></a>
 						</div>
 						<div class="small-4 columns">
 							<input type="text" class="text-center" ng-model="locations[$index]" ng-init="locations[$index]=0">
@@ -33,6 +33,6 @@
 		</article>
 	</div>
 	<div class="large-4 columns">
-		<shopping-cart-directive removeSession="removeSessionCtrl(session)" accept="blabla('from directive')" key='keyA' value='valueA' sessions="sessionsA" locations="locationsA" date="dateA" />
+		<shopping-cart-directive event="eventA" sessions="sessionsA" locations="locationsA" rem="removeA(index)" />
 	</div>
 </section>

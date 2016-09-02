@@ -7,56 +7,42 @@ angular.
       restrict: 'E',
       replace: true,
       scope: {
+          event: '=',
           locations: '=',
           sessions: '=',
-          date: '=',
-          key: '=',
-          value: '=',
-          locationsParam: '=',
-          accept: "&",
-          removeSession: "&"
+          rem: "&"
       },
       templateUrl: 'shopping-cart/shopping-cart.template.html',
       controller: function($scope, $element, $attrs) {
         // Controles desde el shopping-cart
-        //$scope.sessions
-        //$scope.locations = 
-        $scope.save= function() {
-          console.log('from directive', $scope.key, $scope.value);    
-          $scope.accept()
+        $scope.removeEvent = function(index, locations) {
+          locations[index] = 0;
+          $scope.rem(index);
         };
-        $scope.remove = function(session) {
-          $scope.removeSession(session);
-        }
       }
     };
   }).
   controller('shoppingCartController', ['$scope', function($scope) {
     // Controles desde el listado
     var self = this;
+    $scope.event = null;
     $scope.locations = [];
     $scope.locationsA = [];
     $scope.sessionsA = [];
 
-    $scope.keyA = 'AA';
-    $scope.valueA = 'BB';
-    $scope.blabla = function(msg) { 
-      console.log('from controller', $scope.keyA, $scope.valueA);  
-      console.log('hello ' + msg);
+    $scope.removeA = function(index) { 
+      console.log('remove ' + index);
     };
 
-    $scope.removeSessionCtrl = function(session) {
-      console.log("removeSessionCtrl");
-    }
-
-    $scope.pushLocation = function pushLocation(index,session) {
+    $scope.pushLocation = function pushLocation(index,event,session) {
       if ($scope.locations[index] < session.availability) {
         $scope.locations[index]++;
+        $scope.eventA = event;
         $scope.locationsA[index] = $scope.locations[index];
         $scope.sessionsA[index] = session;
       }
-
     };
+
     $scope.popLocation = function popLocation(index) {
       if ($scope.locations[index] > 0) {
         $scope.locations[index]--;

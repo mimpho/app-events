@@ -38,34 +38,46 @@ top-bar .sticky.fixed {
 .panel a {
   display: block;
 }
-.panel .panel-img {
+.panel-img {
   margin-left: -1rem;
   margin-right: -1rem;
   margin-bottom: 1rem;
   height: 0px;
   padding-bottom: 47%;
 }
-.panel .panel-img img {
+.panel-img img {
   width: 100%;
 }
-.panel .panel-date {
+.panel-date {
   margin-bottom: .5rem;
   font-size: .8rem;
   color: #888;
 }
-.panel .panel-description {
+.panel-description {
   height: 7rem;
   line-height: 1.4rem;
   overflow: hidden;
 }
-.panel .panel-divider {
+.panel-divider {
   margin-left: -1rem;
   margin-right: -1rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid #ddd;
 }
-.panel .panel-count {
+.panel-count {
   padding: .5rem 1rem;
   font-weight: bold;
   color: #888;
+}
+.panel-trash {
+  float: right;
+  margin-left: 10px;
+  opacity: .7;
+}
+.panel-trash img {
+  vertical-align: text-bottom;
+  height: 18px;
+}
+.panel-shopping h1 {
+  margin-bottom: 1rem;
 }
