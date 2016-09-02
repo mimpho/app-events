@@ -2,7 +2,7 @@
 
 // Register `sessions` component, along with its associated controller and template
 angular.
-  module('sessions',[]).
+  module('sessions').
   component('sessions', {
     templateUrl: 'sessions/sessions.template.html',
     controller: ['$http', '$state', function SessionsController($http, $state) {
@@ -32,24 +32,4 @@ angular.
       $(document).foundation();
       
     }]
-  }).
-  controller('ControllerZero', ['$scope', 'sharedService', function($scope, sharedService) {
-
-    $scope.handleClick = function(msg) {
-        sharedService.prepForBroadcast(msg);
-    };
-
-    $scope.$on('handleBroadcast', function() {
-        $scope.message = sharedService.message;
-    });
-  }]).
-  controller('ControllerOne', ['$scope', 'sharedService', function($scope, sharedService) {
-      $scope.$on('handleBroadcast', function() {
-          $scope.message = 'ONE: ' + sharedService.message;
-      });
-  }]).
-  controller('ControllerTwo', ['$scope', 'sharedService', function($scope, sharedService) {
-      $scope.$on('handleBroadcast', function() {
-          $scope.message = 'TWO: ' + sharedService.message;
-      });
-  }]);
+  });
