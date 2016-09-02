@@ -30,7 +30,8 @@ angular.
     $scope.locationsA = [];
     $scope.sessionsA = [];
 
-    $scope.removeA = function(index) { 
+    $scope.removeA = function(index) {
+      // TODO: Falta obtener index para poner a 0 el location
       console.log('remove ' + index);
     };
 
