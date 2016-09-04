@@ -6,6 +6,9 @@ angular.
   component('shoppingCart', {
     templateUrl: 'shopping-cart/shopping-cart.template.html',
     controller: ['$scope', 'ShoppingCartService', function ShoppingCartController($scope, ShoppingCartService) {
-		//console.log("component shopping cart");
+    	this.getCart = function() {
+    		return ShoppingCartService.getCart();
+    	}
+    	this.cart = this.getCart();
     }]
   });

@@ -65,17 +65,8 @@ angular.
 
 		//simply search events list for given id
 		//and returns the event object if found
-		self.getEvent = function (id) {
-			for (var i in events) {
-				if (events[i].event.id == id) {
-					return events[i].event;
-				}
-			}
-		}
-
-		//simply returns the events list
-		self.listEvents = function () {
-			return events;
+		self.getCart = function (id) {
+			return cart;
 		}
 
 		//simply search sessions list for given id
@@ -92,9 +83,9 @@ angular.
 
 		//iterate through sessions list and delete 
 		//session if found
-		self.deleteSession = function (sessionid) {
+		self.removeSession = function (sessionid) {
 			var sessions = event.sessions;
-			console.log("deleteSession: event.session["+sessionid+"]");
+			console.log("removeSession: event.session["+sessionid+"]");
 			for (var i in sessions) {
 				if (sessions[i].id == sessionid) {
 					sessions.splice(i, 1);
@@ -118,6 +109,7 @@ angular.
 		}
 
 		self.popLocation = function (sessionid) {
+			// TOOD Esta mal, solo hace bien el primer session
 			var cart_actual_event = cart[actual_event];
 			if (cart_actual_event != null && cart_actual_event.sessions[sessionid].locations > 0) {
 				cart_actual_event.sessions[sessionid].locations--;

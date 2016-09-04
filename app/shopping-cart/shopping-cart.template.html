@@ -1,8 +1,9 @@
 <section class="panel panel-shopping">
 	<h1>Shopping Cart</h1>
 	<div class="panel-divider"></div>
-	<h2>{{event.title}}</h2>
-	<div ng-repeat="session in $ctrl.event.sessions">
+	<h2>{{$ctrl.event.title}}</h2>
+	<div>{{$ctrl.cart}}</div>
+	<div ng-repeat="session in $ctrl.cart">
 		<div ng-if="$ctrl.locations[$index] > 0" class="clearfix">
 			<div class="left panel-date">{{session.date | date:'MM/dd/yyyy'}}</div>
 			<div class="right">
