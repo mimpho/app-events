@@ -5,7 +5,7 @@ angular.
   module('shoppingCart').
   component('shoppingCart', {
     templateUrl: 'shopping-cart/shopping-cart.template.html',
-    controller: ['$scope', function ShoppingCartController($scope) {
+    controller: ['$scope', 'ShoppingCartService', function ShoppingCartController($scope, ShoppingCartService) {
 		//console.log("component shopping cart");
     }]
   });

@@ -29,21 +29,17 @@ angular.
 			event = e;
 		}
 
-		//save method create a new event if not already exists
-		//else update the existing object
-		self.saveEvent = function (event) {
+		//addEvent method create a new event in cart if not already exists
+		self.addEvent = function () {
 			//if this is new event, add it in cart array
-			//console.log("saveEvent");
-			//console.log("event.event.id: "+event.event.id);
 			for (var i in cart) {
-				//console.log("cart[i].event.id: "+cart[i].event.id);
 				if (cart[i].event.id === event.event.id) {
-					//console.log("ya existe");
+					//if exists do nothing
 					return(0);
 				}
 			}
+			console.log("addEvent");
 			actual_event = eid++;
-			//console.log("no existe > lo creamos");
 			cart[actual_event].event = event_ele;
 			cart[actual_event].event.event.id = event.event.id;
 			cart[actual_event].event.event.title = event.event.title;
@@ -51,6 +47,20 @@ angular.
 			for (var j in event.sessions) {
 				cart[actual_event].event.sessions[j].locations = 0;
 			}
+		}
+
+		//iterate through events list and delete 
+		//event if found
+		self.removeEvent = function (id) {
+			for (var i in cart) {
+				if (cart[actual_event].event.sessions[i].locations > 0) {
+					//if exists do nothing
+					return(0);
+				}
+			}
+			console.log("removeEvent");
+			cart[actual_event].event = event_ele;
+			eid--;
 		}
 
 		//simply search events list for given id
@@ -61,17 +71,6 @@ angular.
 					return events[i].event;
 				}
 			}
-		}
-
-		//iterate through events list and delete 
-		//event if found
-		self.deleteEvent = function (id) {
-			for (var i in events) {
-				if (events[i].event.id == id) {
-					events.splice(i, 1);
-				}
-			}
-			eid--;
 		}
 
 		//simply returns the events list
@@ -110,26 +109,22 @@ angular.
 		}
 
 		self.pushLocation = function (sessionid) {
-			var eventid = event.event.id;
-			self.saveEvent(event);
+			self.addEvent();
 			var cart_session = cart[actual_event].sessions[sessionid];
-
 			if (cart_session.locations < event.sessions[sessionid].availability) {
 				cart_session.locations++;
 			}
-			
 			return cart_session.locations;
 		}
 
 		self.popLocation = function (sessionid) {
-			console.log("popLocation: event.session["+sessionid+"]");
-			var session = event.sessions[sessionid];
-			if (session.locations > 0) {
-				session.locations--;
-				if (session.locations == 0) {
-					self.deleteSession(sessionid);
-				}
+			var cart_actual_event = cart[actual_event];
+			if (cart_actual_event != null && cart_actual_event.sessions[sessionid].locations > 0) {
+				cart_actual_event.sessions[sessionid].locations--;
+				self.removeEvent();
+				return cart_actual_event.sessions[sessionid].locations;
 			}
+			return 0;
 		}
 
 	});

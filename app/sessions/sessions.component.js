@@ -31,9 +31,12 @@ component('sessions', {
 			if ($scope.newsession.id == id) $scope.newsession = {};
 		}
 
-		self.pushLocation = function (sessionid) {
-			console.log(ShoppingCartService.pushLocation(sessionid));
-			self.locations = ShoppingCartService.pushLocation(sessionid);
+		$scope.pushLocation = function (sessionid) {
+			self.locations[sessionid] = angular.copy(ShoppingCartService.pushLocation(sessionid));
+		}
+
+		$scope.popLocation = function (sessionid) {
+			self.locations[sessionid] = angular.copy(ShoppingCartService.popLocation(sessionid));
 		}
 /*
 		$scope.edit = function (id) {

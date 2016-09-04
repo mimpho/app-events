@@ -2,11 +2,11 @@
 	<h1>Shopping Cart</h1>
 	<div class="panel-divider"></div>
 	<h2>{{event.title}}</h2>
-	<div ng-repeat="session in sessions">
-		<div ng-if="locations[$index] > 0" class="clearfix">
+	<div ng-repeat="session in $ctrl.event.sessions">
+		<div ng-if="$ctrl.locations[$index] > 0" class="clearfix">
 			<div class="left panel-date">{{session.date | date:'MM/dd/yyyy'}}</div>
 			<div class="right">
-				x{{locations[$index]}} 
+				x{{$ctrl.locations[$index]}} 
 				<a x-ng-click="removeEvent($index,locations)" title="Eliminar" class="panel-trash">
 					<img ng-src="../assets/img/trash.png" />
 				</a>
