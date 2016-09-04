@@ -5,8 +5,8 @@ angular.module('eventsApp', [
   'ngRoute',
   'ui.router',
   //'mm.foundation',
+  'shoppingCart',
   'topBar',
   'eventList',
-  'sessions',
-  'shoppingCart'
+  'sessions'
 ]);
