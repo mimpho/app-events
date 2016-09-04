@@ -19,10 +19,10 @@
 					<div class="medium-3 small-6 columns right">
 						<div class="row collapse">
 							<div class="small-4 columns">
-								<a class="button prefix radius secondary" title="Añadir localidad" ng-click="pushLocation($ctrl.event.event.id,$index)"><b>+</b></a>
+								<a class="button prefix radius secondary" title="Añadir localidad" ng-click="$ctrl.pushLocation($index)"><b>+</b></a>
 							</div>
 							<div class="small-4 columns">
-								<input type="text" class="text-center" ng-model="locations[$index]" ng-init="locations[$index]=0">
+								<input type="text" class="text-center" ng-model="$ctrl.locations[$index]" ng-init="$ctrl.locations[$index]=0">
 							</div>
 							<div class="small-4 columns">
 								<a class="button postfix radius secondary" title="Eliminar localidad" ng-click="popLocation($ctrl.event.event.id,$index)"><b>-</b></a>
