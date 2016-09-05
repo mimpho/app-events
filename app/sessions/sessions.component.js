@@ -21,8 +21,9 @@ angular.
 			
 			$(document).foundation();
 
-			$scope.$on('LOCATION_UPDATED', function(e, data){
-				self.locations[data] = 0;
+			$scope.$on('LOCATION_UPDATED', function(e, data) {
+				if (typeof self.locations != 'undefined')
+					self.locations[data] = 0;
 			});
 
 			$scope.pushLocation = function (sessionid) {
