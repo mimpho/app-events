@@ -4,8 +4,5 @@
 angular.
   module('topBar').
   component('topBar', {
-    templateUrl: 'top-bar/top-bar.template.html'/*,
-    controller: function() {
-      $(document).foundation();
-    }*/
+    templateUrl: 'top-bar/top-bar.template.html'
   });
