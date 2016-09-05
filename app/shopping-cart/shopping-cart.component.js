@@ -8,5 +8,9 @@ angular.
 		controller: ['$scope', 'ShoppingCartService', function ShoppingCartController($scope, ShoppingCartService) {
 
 			this.cart = ShoppingCartService.getCart();
+			$scope.removeSession = function(ievent,isession) {
+				console.log("ievent,isession: " + ievent + " - " + isession);
+				ShoppingCartService.removeSession(ievent,isession);
+			}
 		}]
 	 });

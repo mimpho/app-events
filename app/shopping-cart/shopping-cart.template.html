@@ -1,17 +1,17 @@
 <section class="panel panel-shopping">
 	<h1>Shopping Cart</h1>
 	<div class="panel-divider"></div>
-	<div ng-if="$ctrl.cart[0].num_events == 0" class="info">
+	<div ng-if="!$ctrl.cart.length" class="info">
 		Empty cart
 	</div>
-	<div ng-repeat="event in $ctrl.cart">
+	<div ng-repeat="event in $ctrl.cart" ng-show="$ctrl.cart.length">
 		<h2>{{event.event.title}}</h2>
 		<div ng-repeat="session in event.sessions">
-			<div ng-if="session.locations > 0" class="clearfix">
+			<div ng-show="session.locations > 0" class="clearfix">
 				<div class="left panel-date">{{session.date | date:'MM/dd/yyyy'}}</div>
 				<div class="right">
 					x{{session.locations}} 
-					<a x-ng-click="removeEvent($index,locations)" title="Eliminar" class="panel-trash">
+					<a ng-click="removeSession($parent.$index,$index)" title="Eliminar" class="panel-trash">
 						<img ng-src="../assets/img/trash.png" />
 					</a>
 				</div>
