@@ -14,14 +14,14 @@ angular.
 				get('assets/data/event-info-'+$state.params.eventid+'.json').
 				then(function successCallback(response) {
 					self.event = response.data;
-					ShoppingCartService.init(self.event);
+					ShoppingCartService.setJsonEvent(self.event);
 				}, function errorCallback(response) {
 					self.event = null;
 				});
 			
 			$(document).foundation();
 
-			$scope.$on('LOCATION_UPDATED', function(e, data) {
+			$scope.$on('REMOVE_LOCATION', function(e, data) {
 				if (typeof self.locations != 'undefined')
 					self.locations[data] = 0;
 			});

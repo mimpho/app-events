@@ -4,53 +4,71 @@ angular.
 	module('shoppingCart').
 	service('ShoppingCartService', ['$stateParams', function($stateParams) {
 		var self = this;
-		//number of events in cart
-		var num_events = -1;
-		//actual cart event
-		var actual_event = 0;
-		//JSON event
-		var event = null;
+
 		var session_ele = {
 			date: '',
 			locations: 0
 		};
+		var sessions_ele = [session_ele]
 		var event_ele = {
-			num_events: 0,
 			event: {
 				id: 0,
 				title: ''
 			},
-			sessions: session_ele
+			sessions: sessions_ele
 		};
 		//cart array
 		var cart = [];
 
-		//Load event from JSON
-		self.init = function(e) {
-			event = e;
+		//JSON events
+		var json_events = [];
+		var actual_event_json = null;
+		var actual_event = 0;
+
+		//Set event from JSON on session page loaded
+		self.setJsonEvent = function(e) {
+			for (var i in json_events) {
+				//console.log("i: " + i);
+				if (json_events[i].event.id === e.event.id) {
+					//TODO if exists recover locations
+					actual_event_json = json_events[i];
+					return(0);
+				}
+			}
+			//if no exists, set event
+			json_events.push(e);
+			actual_event_json = e;
 		}
-		console.log("eventid: " + $stateParams.eventid);
 
 		//addEvent method create a new event in cart if not already exists
 		self.addEvent = function () {
+			for (var k in cart) {
+				console.log("cart[" + k + "].event.title: "+cart[k].event.title);
+			}
 			//if this is new event, add it in cart array
 			for (var i in cart) {
-				if (cart[i].event.id === event.event.id) {
+				if (cart[i].event.id === actual_event_json.event.id) {
+					actual_event = i;
 					//if exists do nothing
 					return(0);
 				}
 			}
-			//actual_event = $stateParams.eventid;
-			num_events++;
-			cart.push(event_ele);
-			console.log(num_events);
-			//cart[num_events] = event_ele;
-			cart[num_events].event.id = event.event.id;
-			cart[num_events].event.title = event.event.title;
-			cart[num_events].sessions = event.sessions;
-			for (var j in event.sessions) {
-				cart[num_events].sessions[j].locations = 0;
+			//if no exists create a new event
+			sessions_ele = [session_ele];
+			for (var j in actual_event_json.sessions) {
+				sessions_ele[j] = {
+					date: actual_event_json.sessions[j].date,
+					locations: 0
+				};
 			}
+			event_ele = {
+				event: {
+					id: actual_event_json.event.id,
+					title: actual_event_json.event.title
+				},
+				sessions: sessions_ele
+			};
+			cart.push(event_ele);
 		}
 
 		
@@ -62,56 +80,37 @@ angular.
 				}
 			}
 			if (total_locations == 0) {
-				num_events--;
 				cart.splice(numevent, 1);
 			}
-			console.log(num_events);
 		}
 
 		self.getCart = function () {
 			return cart;
 		}
-/*
-		//simply search sessions list for given id
-		//and returns the session object if found
-		self.getSession = function (sessionid) {
-			var sessions = event.sessions;
-			console.log("getSession: event.session["+sessionid+"]");
-			for (var i in sessions) {
-				if (sessions[i].id == sessionid) {
-					return sessions[i];
-				}
-			}
-		}
 
-		//simply returns the sessions list
-		self.listSessions = function (eventid) {
-			console.log("listSessions: session["+eventid+"]");
-			return event.sessions;
-		}
-*/
 		//remove session from cart
-		self.removeSession = function (ievent,isession) {
-			cart[ievent].sessions[isession].locations = 0;
-			self.removeEvent(ievent);
+		self.removeSession = function (eventid,sessionid) {
+			cart[eventid].sessions[sessionid].locations = 0;
+			self.removeEvent(eventid);
 		}
 
 		//push location from session view
 		self.pushLocation = function (sessionid) {
 			self.addEvent();
-			var cart_session = cart[num_events].sessions[sessionid];
-			if (cart_session.locations < event.sessions[sessionid].availability) {
+			var cart_session = cart[cart.length-1].sessions[sessionid];
+			if (cart_session.locations < actual_event_json.sessions[sessionid].availability) {
 				cart_session.locations++;
+				actual_event_json.sessions[sessionid].locations = cart_session.locations;
 			}
 			return cart_session.locations;
 		}
 
 		//pop location from session view
 		self.popLocation = function (sessionid) {
-			var cart_actual_event = cart[num_events];
+			var cart_actual_event = cart[cart.length-1];
 			if (cart_actual_event != null && cart_actual_event.sessions[sessionid].locations > 0) {
 				cart_actual_event.sessions[sessionid].locations--;
-				self.removeEvent(num_events);
+				self.removeEvent(actual_event);
 				return cart_actual_event.sessions[sessionid].locations;
 			}
 			return 0;
