@@ -1,3 +1,13 @@
+# app-events project based on angular-seed
+
+Author: Marcos de la Torre
+Mail: mimpho@gmail.com
+Repository on Github: https://github.com/mimpho/app-events
+Foundation 5 por CSS
+Angular 1.5.8 for frontend framework
+Execute app typing "npm start"
+
+
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
