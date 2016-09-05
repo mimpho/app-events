@@ -5,7 +5,7 @@ Mail: mimpho@gmail.com
 Repository on Github: https://github.com/mimpho/app-events
 Foundation 5 por CSS
 Angular 1.5.8 for frontend framework
-Execute app typing "npm start"
+"npm start" for app running
 
 
 # angular-seed — the seed for AngularJS apps
