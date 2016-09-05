@@ -4,8 +4,8 @@ angular.
 	module('shoppingCart').
 	service('ShoppingCartService', function() {
 		var self = this;
-		//to create unique event id
-		var eid = 0;
+		//number of events in cart
+		var num_events = 0;
 		//actual cart event
 		var actual_event = 0;
 		//JSON event
@@ -15,6 +15,7 @@ angular.
 			locations: 0
 		};
 		var event_ele = {
+			num_events: 0,
 			event: {
 				id: 0,
 				title: ''
@@ -38,34 +39,35 @@ angular.
 					return(0);
 				}
 			}
-			console.log("addEvent");
-			actual_event = eid++;
-			cart[actual_event].event = event_ele;
-			cart[actual_event].event.event.id = event.event.id;
-			cart[actual_event].event.event.title = event.event.title;
-			cart[actual_event].event.sessions = event.sessions;
+			actual_event = num_events++;
+			cart[actual_event] = event_ele;
+			cart[actual_event].num_events = num_events;
+			cart[actual_event].event.id = event.event.id;
+			cart[actual_event].event.title = event.event.title;
+			cart[actual_event].sessions = event.sessions;
 			for (var j in event.sessions) {
-				cart[actual_event].event.sessions[j].locations = 0;
+				cart[actual_event].sessions[j].locations = 0;
 			}
 		}
 
 		//iterate through events list and delete 
 		//event if found
 		self.removeEvent = function (id) {
-			for (var i in cart) {
-				if (cart[actual_event].event.sessions[i].locations > 0) {
-					//if exists do nothing
-					return(0);
+			var total_locations = 0;
+			for (var i in cart[actual_event].sessions) {
+				if (cart[actual_event].sessions[i].locations > 0) {
+					total_locations += cart[actual_event].sessions[i].locations;
 				}
 			}
-			console.log("removeEvent");
-			cart[actual_event].event = event_ele;
-			eid--;
+			if (total_locations == 0) {
+				num_events--;
+				cart[actual_event].event = event_ele;
+				cart[actual_event].event.title = "";
+				cart[actual_event].num_events = num_events;
+			}
 		}
 
-		//simply search events list for given id
-		//and returns the event object if found
-		self.getCart = function (id) {
+		self.getCart = function () {
 			return cart;
 		}
 

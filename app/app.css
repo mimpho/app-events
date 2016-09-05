@@ -81,3 +81,6 @@ top-bar .sticky.fixed {
 .panel-shopping h1 {
   margin-bottom: 1rem;
 }
+.info {
+  color: #aaa;
+}
