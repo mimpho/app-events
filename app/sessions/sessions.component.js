@@ -29,12 +29,12 @@ angular.
 				}
 			});
 
-			$scope.pushLocation = function (sessionid) {
-				self.locations[sessionid] = angular.copy(ShoppingCartService.pushLocation(sessionid));
+			$scope.pushLocation = function (eventid,sessionid) {
+				self.locations[sessionid] = angular.copy(ShoppingCartService.pushLocation(eventid,sessionid));
 			}
 
-			$scope.popLocation = function (sessionid) {
-				self.locations[sessionid] = angular.copy(ShoppingCartService.popLocation(sessionid));
+			$scope.popLocation = function (eventid,sessionid) {
+				self.locations[sessionid] = angular.copy(ShoppingCartService.popLocation(eventid,sessionid));
 			}
 
 		}]

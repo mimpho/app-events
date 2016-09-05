@@ -2,9 +2,9 @@
 
 angular.
 	module('shoppingCart').
-	service('ShoppingCartService', ['$stateParams', function($stateParams) {
+	service('ShoppingCartService', function() {
+		
 		var self = this;
-
 		var session_ele = {
 			date: '',
 			locations: 0
@@ -88,14 +88,14 @@ angular.
 
 		//remove session from cart
 		self.removeSession = function (eventid,sessionid) {
-			cart[eventid].sessions[sessionid].locations = 0;
-			self.removeEvent(eventid);
+			cart[self.getEventNumber(eventid)].sessions[sessionid].locations = 0;
+			self.removeEvent(self.getEventNumber(eventid));
 		}
 
 		//push location from session view
-		self.pushLocation = function (sessionid) {
+		self.pushLocation = function (eventid,sessionid) {
 			self.addEvent();
-			var cart_session = cart[cart.length-1].sessions[sessionid];
+			var cart_session = cart[self.getEventNumber(eventid)].sessions[sessionid];
 			if (cart_session.locations < actual_event_json.sessions[sessionid].availability) {
 				cart_session.locations++;
 				actual_event_json.sessions[sessionid].locations = cart_session.locations;
@@ -104,8 +104,8 @@ angular.
 		}
 
 		//pop location from session view
-		self.popLocation = function (sessionid) {
-			var cart_actual_event = cart[cart.length-1];
+		self.popLocation = function (eventid,sessionid) {
+			var cart_actual_event = cart[self.getEventNumber(eventid)];
 			if (cart_actual_event != null && cart_actual_event.sessions[sessionid].locations > 0) {
 				cart_actual_event.sessions[sessionid].locations--;
 				self.removeEvent(actual_event);
@@ -114,4 +114,13 @@ angular.
 			return 0;
 		}
 
-	}]);
+		//get number of event from event id
+		self.getEventNumber = function (eventid) {
+			for (var i in cart) {
+				if (cart[i].event.id === eventid) {
+					return i;
+				}
+			}
+		}
+
+	});
