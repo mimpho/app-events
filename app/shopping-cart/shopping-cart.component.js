@@ -9,8 +9,8 @@ angular.
 
 			this.cart = ShoppingCartService.getCart();
 			$scope.removeSession = function(ievent,isession) {
-				console.log("ievent,isession: " + ievent + " - " + isession);
-				ShoppingCartService.removeSession(ievent,isession);
+				angular.copy(ShoppingCartService.removeSession(ievent,isession));
+				$scope.$emit('LOCATION_UPDATED', isession);
 			}
 		}]
 	 });

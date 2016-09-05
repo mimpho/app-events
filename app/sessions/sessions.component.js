@@ -21,6 +21,10 @@ angular.
 			
 			$(document).foundation();
 
+			$scope.$on('LOCATION_UPDATED', function(e, data){
+				self.locations[data] = 0;
+			});
+
 			$scope.pushLocation = function (sessionid) {
 				self.locations[sessionid] = angular.copy(ShoppingCartService.pushLocation(sessionid));
 			}
