@@ -14,6 +14,7 @@ angular.
 				get('assets/data/event-info-'+$state.params.eventid+'.json').
 				then(function successCallback(response) {
 					self.event = response.data;
+					//load JSON event into cart service
 					ShoppingCartService.setJsonEvent(self.event);
 				}, function errorCallback(response) {
 					self.event = null;
@@ -22,8 +23,10 @@ angular.
 			$(document).foundation();
 
 			$scope.$on('REMOVE_LOCATION', function(e, data) {
-				if (typeof self.locations != 'undefined')
+				//Synchronizaton with remove icon from shopping_cart view
+				if (typeof self.locations != 'undefined') {
 					self.locations[data] = 0;
+				}
 			});
 
 			$scope.pushLocation = function (sessionid) {

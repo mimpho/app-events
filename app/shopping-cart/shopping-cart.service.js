@@ -42,9 +42,6 @@ angular.
 
 		//addEvent method create a new event in cart if not already exists
 		self.addEvent = function () {
-			for (var k in cart) {
-				console.log("cart[" + k + "].event.title: "+cart[k].event.title);
-			}
 			//if this is new event, add it in cart array
 			for (var i in cart) {
 				if (cart[i].event.id === actual_event_json.event.id) {
@@ -71,7 +68,7 @@ angular.
 			cart.push(event_ele);
 		}
 
-		
+		//Remove event when no locations found
 		self.removeEvent = function (numevent) {
 			var total_locations = 0;
 			for (var i in cart[numevent].sessions) {
@@ -84,6 +81,7 @@ angular.
 			}
 		}
 
+		//get cart from shopping cart view
 		self.getCart = function () {
 			return cart;
 		}

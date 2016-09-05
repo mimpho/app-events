@@ -9,9 +9,9 @@ angular.
 
 			this.cart = ShoppingCartService.getCart();
 
-			$scope.removeSession = function(ievent,isession) {
-				angular.copy(ShoppingCartService.removeSession(ievent,isession));
-				$scope.$emit('REMOVE_LOCATION', isession);
+			$scope.removeSession = function(eventid,sessionid) {
+				angular.copy(ShoppingCartService.removeSession(eventid,sessionid));
+				$scope.$emit('REMOVE_LOCATION', sessionid);
 			}
 		}]
 	 });
