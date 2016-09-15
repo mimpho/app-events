@@ -1,5 +1,5 @@
 # Demo on-line
-https://github.com/mimpho/app-events
+http://multimedia.sicalipsis.com/onebox/
 
 # app-events project based on angular-seed
 
