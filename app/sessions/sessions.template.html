@@ -9,7 +9,7 @@
 				<h1>{{$ctrl.event.event.title}}</h1>
 				<h2>{{$ctrl.event.event.subtitle}}</h2>
 				<div class="panel-img">
-					<img ng-src="{{$ctrl.event.event.image}}" alt="{{$ctrl.event.event.title}}" />
+					<img ng-src=".{{$ctrl.event.event.image}}" alt="{{$ctrl.event.event.title}}" />
 				</div>
 				<div ng-repeat="session in $ctrl.event.sessions | orderBy:$ctrl.orderProp" class="clearfix">
 					<div class="left">

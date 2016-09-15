@@ -4,7 +4,7 @@
 			<h1><a title="{{event.title}}" ng-click="$ctrl.getEventInfo(event.id)">{{event.title}}</a></h1>
 			<h2><a title="{{event.subtitle}}" ng-click="$ctrl.getEventInfo(event.id)">{{event.subtitle}}</a></h2>
 			<a title="{{event.title}}" class="panel-img" ng-click="$ctrl.getEventInfo(event.id)">
-				<img ng-src="{{event.image}}" alt="{{event.title}}" />
+				<img ng-src=".{{event.image}}" alt="{{event.title}}" />
 			</a>
 			<p class="panel-date">
 				<span>{{event.startDate | date:'MM/dd/yyyy'}}</span> - <span>{{event.endDate | date:'MM/dd/yyyy'}}</span>
