@@ -114,6 +114,12 @@ angular.
 			return 0;
 		}
 
+		//get locations from event session
+		self.getLocations = function (eventid, sessionid) {
+			var cart_event = cart[self.getEventNumber(eventid)];
+			return (cart_event == null) ? 0 : cart_event.sessions[sessionid].locations;
+		}
+
 		//get number of event from event id
 		self.getEventNumber = function (eventid) {
 			for (var i in cart) {

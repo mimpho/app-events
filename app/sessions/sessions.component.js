@@ -7,15 +7,21 @@ angular.
 		templateUrl: 'sessions/sessions.template.html',
 		controller: ['$scope', '$http', '$state', 'ShoppingCartService', function SessionsController($scope, $http, $state, ShoppingCartService) {
 			var self = this;
-			
+
 			self.orderProp = '-sessions.date';
 
 			$http.
 				get('assets/data/event-info-'+$state.params.eventid+'.json').
 				then(function successCallback(response) {
 					self.event = response.data;
+					self.locations = new Array(self.event.sessions.length);
 					//load JSON event into cart service
 					ShoppingCartService.setJsonEvent(self.event);
+					//Get previous locations
+					for (var i=0; i<self.locations.length; i++) {
+						self.locations[i] = ShoppingCartService.getLocations($state.params.eventid,i);
+					}
+
 				}, function errorCallback(response) {
 					self.event = null;
 				});
