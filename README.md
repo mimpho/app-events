@@ -1,3 +1,6 @@
+# Demo on-line
+https://github.com/mimpho/app-events
+
 # app-events project based on angular-seed
 
 Author: Marcos de la Torre
